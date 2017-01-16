@@ -1,5 +1,6 @@
 {% extends 'master.html' %}
 {% block primary %}
+    {% load static %}
     <div class="fullwidth-block inner-content">
         <div class="container">
             <div class="row">
@@ -8,7 +9,7 @@
                         <h2 class="entry-title">درباره دانشگاه شهید بهشتی</h2>
                         <hr>
                         <figure class="featured-image">
-                            <img src="../static/Image/aboutSbu.jpg" alt="post image">
+                            <img src="{% static 'Image/aboutSbu.jpg' %}" alt="post image">
                         </figure>
                         <p class="leading">دانشگاه شهید بهشتی که در بهمن ماه سال 1338 تأسيس شده، یکی از دانشگاه‌های
                             دولتی ایران است که در منطقهٔ اوین، غرب ولنجک و شرق درکه در شمال غربی تهران با 60 هکتار واقع
