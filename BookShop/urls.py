@@ -16,9 +16,9 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from Book.views import handler404
-
 urlpatterns = [
     url(r'', include('Book.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'.*', handler404, name='handler404')
 ]
+

@@ -7,7 +7,7 @@
                 {% for content in contentSlider %}
                     <li class="contain">
                         <div class="container">
-                            <img src="{% static 'Image/35414_1000_1100.jpg' %}" width="1000" height="450" alt>
+                            <img src="{{ content.photo.url }}" width="1000" height="450" alt>
                             <div class="center">
                                 <h2 class="slide-title">{{ content.title }}</h2>
                                 <h3 class="slide-subtitle"></h3>
@@ -38,7 +38,7 @@
                             <div class="Rate">امتیاز</div>
                             <span class="rateVal">{{ new.score }}</span>
                         </div>
-                        <a href="#"><img src="{{ new.photo }}" width="150px" alt></a>
+                        <a href="#"><img src="{{ new.photo.url }}" width="150px" alt></a>
                     </div> <!-- .event -->
                 {% endfor %}
             </div> <!-- .event-carousel -->
@@ -62,7 +62,7 @@
                             <div class="Rate">امتیاز</div>
                             <span class="rateVal">{{ chose.score }}</span>
                         </div>
-                        <a href="#"><img src="{{ chose.photo }}" width="150px" alt></a>
+                        <a href="#"><img src="{{ chose.photo.url }}" width="150px" alt></a>
                     </div> <!-- .event -->
                 {% endfor %}
             </div> <!-- .event-carousel -->
