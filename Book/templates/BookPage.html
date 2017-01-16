@@ -1,0 +1,21 @@
+{% extends 'master.html' %}
+{% block primary %}
+    <div class="bookPageInfo">
+        <div class="bookDetail">
+            <ul style="list-style-type: none;padding-left: 0px;padding-right: 50px;">
+                {% for bookInfo in book_description %}
+                    <li><p></p></li>
+                {% endfor %}
+
+            </ul>
+        </div>
+        <div class="bookImage">
+            <img src="{{ book.photo }}" style="width: 200px; height: 300px;" alt>
+        </div>
+        <p style="direction: rtl;float: left;margin-top: 20px;">قیمت: {{ book.price }}</p>
+        <h2><a href="#" style="direction: rtl;margin-left: 50px;color: white;">افزودن به سبد کالا</a></h2>
+        <br/>
+        <h1 style="float: right;direction: rtl;">معرفی کتاب</h1>
+        <p style="direction: rtl;">{{ book.description }}</p>
+    </div>
+{% endblock %}
