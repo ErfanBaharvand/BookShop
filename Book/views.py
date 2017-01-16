@@ -44,7 +44,10 @@ def handler404(request):
     return HttpResponse(page.render())
 
 
-# def book_detail(request, id):
-#     book = Book.objects.filter(pk=id)
-#     book_descrtiption = {'title':book.title, 'author': book.athors}
-#     return render(request, 'BookPage.html', {'book_description': book, ''})
+def book_detail(request, id):
+    pass
+    book = Book.objects.filter(pk=id)
+    author = book.authors[0]
+    book_descrtiption = {'عنوان':book.title, 'نویسنده': author.first_name +" " +author.last_name
+        , 'ناشر': book.publisher.name, 'تاریخ انتشار': book.publication_date, "امتیاز":book.score}
+    return render(request, 'BookPage.html', {'book_description': book_descrtiption, 'book': book})
