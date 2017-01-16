@@ -34,5 +34,5 @@ class Book(models.Model):
 
 
 class ChosenBooks(models.Model):
-    number = models.IntegerField(max_length=2)
-    book = models.OneToOneField(Book, on_delete=models.CASCADE, )
+    number = models.IntegerField()
+    book = models.OneToOneField(Book, on_delete=models.CASCADE)

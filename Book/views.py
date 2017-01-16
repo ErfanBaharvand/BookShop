@@ -7,5 +7,5 @@ from django.template import RequestContext, loader
 
 
 def home(request):
-    page = loader.get_template('404Page.html')
+    page = loader.get_template('about.html')
     return HttpResponse(page.render())
