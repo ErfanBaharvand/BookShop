@@ -23,7 +23,8 @@ class Author(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=48)
+    name = models.CharField(max_length=48, default="")
+    en_name = models.CharField(max_length=48, default="")
 
     def __str__(self):
         return self.name
@@ -38,14 +39,14 @@ class Book(models.Model):
     score = models.FloatField(max_length=5)
     categories = models.ManyToManyField(Category)
     chosen = models.BooleanField(default=False)
-    description = models.CharField(max_length=512)
+    description = models.CharField(max_length=512, default="")
 
     def __str__(self):
         return '%s ,publisher %s' % (self.title, self.publisher)
 
 
 class slider(models.Model):
-    title = models.CharField(models.CharField)
+    title = models.CharField(max_length=48)
     number = models.IntegerField
     photo = models.ImageField(upload_to='Book/static/slider')
     enabled = models.BooleanField(default=False)
