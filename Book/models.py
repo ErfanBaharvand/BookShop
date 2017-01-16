@@ -58,7 +58,7 @@ class Slider(models.Model):
         return 'slider %s, number %s,book %s' % (self.title, self.number, self.book)
 
 
-class User(models.Model):
+class Token(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     token = models.CharField(max_length=48)
 

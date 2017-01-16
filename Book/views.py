@@ -1,11 +1,13 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, render_to_response
 
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext, loader
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.views.decorators.http import require_POST
 
 from Book.models import Book, Category, Slider
-from Book.models import User
+from Book.models import Token
 
 
 def home(request):
@@ -60,15 +62,16 @@ def book_detail(request, id):
 
 def category(request, id):
     books = Book.objects.filter(categories__en_name=Category.objects.get(pk=id).en_name)
-    return render(request, 'CategoryPage.html', {'books': books})
+    listMenu = Category.objects.all()
+    return render(request, 'CategoryPage.html', {'books': books, 'listMenu':listMenu})
 
 
-@csrf_protect
+@csrf_exempt
+@require_POST
 def register(request):
     name = request.POST['name']
     family = request.POST['family']
     email = request.POST['email']
     password = request.POST['pass']
-    user = User.objects.create(name=name, family=family, email=email, password=password)
-
-    return HttpResponseRedirect('/')
+    user = User.objects.create(first_name=name, last_name=family ,email=email, password=password, username=email)
+    return render(request, 'index.html')
