@@ -45,7 +45,7 @@ class Book(models.Model):
         return '%s ,publisher %s' % (self.title, self.publisher)
 
 
-class slider(models.Model):
+class Slider(models.Model):
     title = models.CharField(max_length=48)
     number = models.IntegerField
     photo = models.ImageField(upload_to='Book/static/slider')
@@ -54,4 +54,4 @@ class slider(models.Model):
     book = models.ForeignKey(Book)
 
     def __str__(self):
-        return 'slider %s, number %S,book %s' %(self.title, self.number, self.book)
+        return 'slider %s, number %s,book %s' % (self.title, self.number, self.book)
