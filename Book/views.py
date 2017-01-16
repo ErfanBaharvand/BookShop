@@ -1,9 +1,11 @@
-from django.shortcuts import render ,render_to_response
+from django.shortcuts import render, render_to_response
 
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext, loader
+from django.views.decorators.csrf import csrf_protect
 
 from Book.models import Book, Category, Slider
+from Book.models import User
 
 
 def home(request):
@@ -18,10 +20,10 @@ def home(request):
     if len(slider) > 5:
         slider = slider[:5]
     return render(request, 'index.html', {'chosenBook': chosen_books
-                                   , 'newBook': new_books
-                                   , 'listMenu': listMenu
-                                   , 'contentSlider': slider
-                                   })
+        , 'newBook': new_books
+        , 'listMenu': listMenu
+        , 'contentSlider': slider
+                                          })
 
 
 def about(request):
@@ -47,14 +49,26 @@ def handler404(request):
 def book_detail(request, id):
     book = Book.objects.get(pk=id)
     author = book.authors.all()[0]
-    key = ['عنوان', 'نویسنده','ناشر', 'تاریخ انتشار', 'امتیاز']
-    val = [book.title, author.first_name + " " + author.last_name, book.publisher.name, book.publication_date, book.score]
+    key = ['عنوان', 'نویسنده', 'ناشر', 'تاریخ انتشار', 'امتیاز']
+    val = [book.title, author.first_name + " " + author.last_name, book.publisher.name, book.publication_date,
+           book.score]
     detail = []
     for i in range(0, len(key)):
-        detail.append(str(key[i]) + ":" +str(val[i]))
+        detail.append(str(key[i]) + ":" + str(val[i]))
     return render(request, 'BookPage.html', {'detail': detail, 'val': val, 'book': book})
 
 
 def category(request, id):
     books = Book.objects.filter(categories__en_name=Category.objects.get(pk=id).en_name)
     return render(request, 'CategoryPage.html', {'books': books})
+
+
+@csrf_protect
+def register(request):
+    name = request.POST['name']
+    family = request.POST['family']
+    email = request.POST['email']
+    password = request.POST['pass']
+    user = User.objects.create(name=name, family=family, email=email, password=password)
+
+    return HttpResponseRedirect('/')

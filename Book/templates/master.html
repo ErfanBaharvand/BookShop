@@ -59,16 +59,17 @@
                         </div>
                         <div id="registerPage" class="tab-pane fade">
                             <h2>Register</h2>
-                            <form action="" method="post">
+                            <form action="/update/userRegister/" method="post">
+                                {% csrf_token %}
                                 <div class="form-group">
                                     <label for="usr" style="margin-top: 5px">Enter Name:</label>
-                                    <input type="text" class="form-control" id="usr" placeholder="Enter Name">
+                                    <input type="text" class="form-control" id="usr" placeholder="Enter Name" name="name">
                                     <label for="usr" style="margin-top: 5px">Enter Family:</label>
-                                    <input type="text" class="form-control" id="usr" placeholder="Enter Family">
+                                    <input type="text" class="form-control" id="usr" placeholder="Enter Family" name="family">
                                     <label for="email" style="margin-top: 5px">Enter Email:</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
                                     <label for="pwd" style="margin-top: 5px">Enter Password:</label>
-                                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pass">
                                 </div>
                                 <button type="submit" class="btn btn-success">Register</button>
                                 <button type="button" class="btn btn-danger">Cancel</button>
