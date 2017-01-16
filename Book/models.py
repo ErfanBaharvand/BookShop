@@ -35,7 +35,7 @@ class Book(models.Model):
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)
     publication_date = models.DateField()
-    photo = models.ImageField(upload_to='Book/static/books')
+    photo = models.ImageField(upload_to='book_images/')
     score = models.FloatField(max_length=5, default=0)
     categories = models.ManyToManyField(Category)
     chosen = models.BooleanField(default=False)

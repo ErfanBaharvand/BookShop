@@ -2,15 +2,15 @@
 {% block primary %}
     <div class="bookPageInfo">
         <div class="bookDetail">
-            <ul style="list-style-type: none;padding-left: 0;padding-right: 50px;">
+            <ul style="list-style-type: none;padding-left: 0;padding-right: 50px; margin-top: 5px;">
                 {% for det in detail%}
-                    <li><p>{{ det }}</p></li>
+                    <li style="float: right;"><p>{{ det }}</p></li><br/>
                 {% endfor %}
 
             </ul>
         </div>
         <div class="bookImage">
-            <img src="{{ book.photo }}" style="width: 200px; height: 300px;" alt>
+            <img src="{{ book.photo.path }}" style="width: 200px; height: 300px;" alt>
         </div>
         <p style="direction: rtl;float: left;margin-top: 20px;">قیمت: {{ book.price }}</p>
         <h2><a href="#" style="direction: rtl;margin-left: 50px;color: white;">افزودن به سبد کالا</a></h2>

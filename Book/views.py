@@ -51,5 +51,5 @@ def book_detail(request, id):
     val = [book.title, author.first_name + " " + author.last_name, book.publisher.name, book.publication_date, book.score]
     detail = []
     for i in range(0, len(key)):
-        detail[i] = key[i] + ":" +val[i]
+        detail.append(str(key[i]) + ":" +str(val[i]))
     return render(request, 'BookPage.html', {'detail': detail, 'val': val, 'book': book})
