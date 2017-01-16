@@ -1,7 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render ,render_to_response
 
-
-from django.http import HttpResponse, HttpResponseRedirect ,Http404
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext, loader
 
 
@@ -24,6 +23,7 @@ def contact(request):
     page = loader.get_template('contact.html')
     return HttpResponse(page.render())
 
-def Resolver404(Http404):
+
+def handler404(request):
     page = loader.get_template('404Page.html')
     return HttpResponse(page.render())
