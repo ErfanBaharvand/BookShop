@@ -19,3 +19,7 @@ tests/report/
 db.sqlite3
 Book/migrations/
 .idea/
+Book/static/Image/
+Book/static/books/
+Book/static/slider/
+book_images/

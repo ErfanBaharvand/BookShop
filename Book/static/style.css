@@ -2105,8 +2105,7 @@ body {
     font-size: 0.875em; }
 
 /* line 1, sass/pages/_homepage.scss */
-.slider {
-  position: relative; }
+.slider { }
   /* line 3, sass/pages/_homepage.scss */
   .slider .slides {
     *zoom: 1;
