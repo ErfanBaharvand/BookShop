@@ -1,11 +1,11 @@
 {% extends 'master.html' %}
 {% block primary %}
     <div style="margin-top: 50px;margin-bottom: 50px;margin-left: 50px;">
-        {% for book in categoryBook %}
+        {% for book in books %}
             <div class="card">
-                <img src="Image\member-1.jpg" alt="Book" style="width:100%">
+                <img src={{ book.photo.url }} alt="Book" style="width:100%">
                 <div class="containerCard">
-                    <p>Computer EngineerComputer EngineerComputer EngineerComputer</p>
+                    <p>{{book.title}}</p>
                 </div>
             </div>
         {% endfor %}

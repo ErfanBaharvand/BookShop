@@ -53,3 +53,8 @@ def book_detail(request, id):
     for i in range(0, len(key)):
         detail.append(str(key[i]) + ":" +str(val[i]))
     return render(request, 'BookPage.html', {'detail': detail, 'val': val, 'book': book})
+
+
+def category(request, id):
+    books = Book.objects.filter(categories__en_name=Category.objects.get(pk=id).en_name)
+    return render(request, 'CategoryPage.html', {'books': books})

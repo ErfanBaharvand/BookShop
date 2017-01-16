@@ -12,7 +12,7 @@
                                 <h2 class="slide-title">{{ content.title }}</h2>
                                 <h3 class="slide-subtitle"></h3>
                                 <p class="slide-desc">{{ content.description }}</p>
-                                <a href="/bookDetail/{{ content.book.id }}" style="direction: rtl;" class="button cut-corner">بیشتر ...</a>
+                                <a href="/book/{{ content.book.id }}" style="direction: rtl;" class="button cut-corner">بیشتر ...</a>
                             </div>
                         </div>
                     </li>
@@ -62,7 +62,7 @@
                             <div class="Rate">امتیاز</div>
                             <span class="rateVal">{{ chose.score }}</span>
                         </div>
-                        <a href="#"><img src="{{ chose.photo.url }}" width="150px" alt></a>
+                        <a href="book/{{ chose.id }}"><img src="{{ chose.photo.url }}" width="150px" alt></a>
                     </div> <!-- .event -->
                 {% endfor %}
             </div> <!-- .event-carousel -->
