@@ -36,7 +36,7 @@ class Book(models.Model):
     publisher = models.ForeignKey(Publisher)
     publication_date = models.DateField()
     photo = models.ImageField(upload_to='Book/static/books')
-    score = models.FloatField(max_length=5)
+    score = models.FloatField(max_length=5, default=0)
     categories = models.ManyToManyField(Category)
     chosen = models.BooleanField(default=False)
     description = models.CharField(max_length=512, default="")

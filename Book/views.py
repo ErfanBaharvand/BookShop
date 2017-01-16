@@ -45,9 +45,11 @@ def handler404(request):
 
 
 def book_detail(request, id):
-    pass
-    book = Book.objects.filter(pk=id)
-    author = book.authors[0]
-    book_descrtiption = {'عنوان':book.title, 'نویسنده': author.first_name +" " +author.last_name
-        , 'ناشر': book.publisher.name, 'تاریخ انتشار': book.publication_date, "امتیاز":book.score}
-    return render(request, 'BookPage.html', {'book_description': book_descrtiption, 'book': book})
+    book = Book.objects.get(pk=id)
+    author = book.authors.all()[0]
+    key = ['عنوان', 'نویسنده','ناشر', 'تاریخ انتشار', 'امتیاز']
+    val = [book.title, author.first_name + " " + author.last_name, book.publisher.name, book.publication_date, book.score]
+    detail = []
+    for i in range(0, len(key)):
+        detail[i] = key[i] + ":" +val[i]
+    return render(request, 'BookPage.html', {'detail': detail, 'val': val, 'book': book})
