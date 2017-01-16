@@ -107,19 +107,9 @@
                     </div>
                 </div>
             </form>
-            <a href="#">هنر</a>
-            <a href="#">بیوگرافی و خاطرات</a>
-            <a href="#">تجارت و سرمایه گذاری</a>
-            <a href="#">کودک و نوجوان</a>
-            <a href="#">رایانه و اینتر نت</a>
-            <a href="#">دین</a>
-            <a href="#">تاریخ</a>
-            <a href="#">خانه و باغ</a>
-            <a href="#">ادبیات و داستان</a>
-            <a href="#">پزشکی</a>
-            <a href="#">خوانواده</a>
-            <a href="#">مرجع</a>
-            <a href="#">ورزش</a>
+            {% for list in listMenu %}
+                <a href="/category/{{ list.enName }}">{{ list.name }}</a>
+            {% endfor %}
         </div>
     </header> <!-- .site-header -->
 
