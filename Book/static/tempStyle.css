@@ -159,3 +159,16 @@
     font-size: 20px;
     color: rgb(186,74,0);
 }
+
+.bookPageInfo{
+    width: 800px;
+    margin:0 auto;
+}
+
+.bookDetail{
+    float: right;
+}
+
+.bookDetail li a{
+    direction: rtl;
+}
