@@ -44,3 +44,7 @@ def handler404(request):
     return HttpResponse(page.render())
 
 
+# def book_detail(request, id):
+#     book = Book.objects.filter(pk=id)
+#     book_descrtiption = {'title':book.title, 'author': book.athors}
+#     return render(request, 'BookPage.html', {'book_description': book, ''})

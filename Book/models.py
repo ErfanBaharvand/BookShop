@@ -40,6 +40,7 @@ class Book(models.Model):
     categories = models.ManyToManyField(Category)
     chosen = models.BooleanField(default=False)
     description = models.CharField(max_length=512, default="")
+    price = models.FloatField(default=0)
 
     def __str__(self):
         return '%s ,publisher %s' % (self.title, self.publisher)
