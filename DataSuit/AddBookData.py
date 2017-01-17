@@ -1,3 +1,5 @@
+from django.db.models import ImageField
+
 from Book.models import Book
 from Book.models import Publisher
 from Book.models import Author
@@ -5,6 +7,10 @@ from Book.models import Category
 
 
 def createData():
+    Book.objects.all().delete()
+    Publisher.objects.all().delete()
+    Author.objects.all().delete()
+    Category.objects.all().delete()
     publisher1 = Publisher.objects.create(name="موسسه پژوهشی حکمت و فلسفه ایران", address="داخل تهران", city="تهران",
                                           country="ایران", website="a.com")
     publisher2 = Publisher.objects.create(name="انتشارات موسسه آموزشی و پژوهشی امام خمینی (ره)", address="داخل تهران",
@@ -66,64 +72,180 @@ def createData():
     category4 = Category.objects.create(name="فلسفه", en_name="phalsafe")
     category5 = Category.objects.create(name="داستان", en_name="dastan")
 
-    book1 = Book.objects.create(title="جهت نما (40 پرسش و پاسخ مهدوی)", authors=author8, publisher=publisher4,
-                                publication_date="2017-01-16", photo="book_images/3.jpg ", score=5.0,
-                                categories=category1, description="", price=36000)
-    book2 = Book.objects.create(title="پایی که جا ماند", authors=author1, publisher=publisher5,
-                                publication_date="2017-01-16", photo="book_images/1.jpg", score=5.0,
-                                categories=category2, description="", price=33000)
-    book3 = Book.objects.create(title="چشمه سار حکمت، یا اندرزهای لقمان حکیم در قرآن و حدیث", authors=author9,
-                                publisher=publisher3, publication_date="2017-01-16", photo="book_images/14.jpg",
-                                score=5.0, categories=category3, description="", price=36000)
-    book4 = Book.objects.create(title="آشنایی با علوم حدیثی", authors=author3, publisher=publisher6,
-                                publication_date="2017-01-16", photo="", score=5.0, categories=category3,
-                                description="book_images/19.jpg", price=24000)
-    book5 = Book.objects.create(title="فلسفه مقدماتی: برگرفته از آثار استاد شهید مرتضی مطهری", authors=author4,
-                                publisher=publisher2, publication_date="2017-01-16", photo="book_images/2.jpg",
-                                score=5.0, categories=category4, description="", price=19000)
-    book6 = Book.objects.create(title="پرتوی از عظمت امام حسین علیه السلام", authors=author5, publisher=publisher3,
-                                publication_date="2017-01-16", photo="book_images/15.jpg", score=5.0,
-                                categories=category3, description="", price=48600)
-    book7 = Book.objects.create(title="فریادرس: داستان هایی از کرامات امام زمان (عج)", authors=author6,
-                                publisher=publisher3, publication_date="2017-01-16", photo="book_images/16.jpg",
-                                score=5.0, categories=category5, description="", price=36000)
-    book8 = Book.objects.create(title="عقل از دیدگاه مولانا", authors=author7, publisher=publisher1,
-                                publication_date="2017-01-16", photo="book_images/18.jpg", score=5.0,
-                                categories=category4, description="", price=13500)
-    book9 = Book.objects.create(title="ازدواج به سبک شهدا", authors=author10, publisher=publisher7,
-                                publication_date="2017-01-16", photo="book_images/10.jpg", score=5.0,
-                                categories=category2, description="", price=4000)
-    book10 = Book.objects.create(title="غریب قریب: زندگینامه مهاجر افغانی شهید رجب غلامی", authors=author11,
-                                 publisher=publisher8, publication_date="2017-01-16", photo="book_images/17.jpg",
-                                 score=5.0, categories=category2, description="", price=6500)
-    book11 = Book.objects.create(title="روزگاران 23: کتاب تفحص", authors=author12, publisher=publisher9,
-                                 publication_date="2017-01-16", photo="book_images/7.jpg", score=5.0,
-                                 categories=category2, description="", price=5500)
-    book12 = Book.objects.create(title="از چشم ها 14: ققنوس سوخته (کتاب بهروز فلاحت پور)", authors=author13,
-                                 publisher=publisher9, publication_date="2017-01-16", photo="book_images/6.jpg",
-                                 score=5.0, categories=category2, description="", price=7000)
-    book13 = Book.objects.create(title="در راه (خاطرات آزاده جانبار، سرباز وظیفه علی خسروی نیک)", authors=author14,
-                                 publisher=publisher10, publication_date="2017-01-16", photo="book_images/5.jpg",
-                                 score=5.0, categories=category2, description="", price=11250)
-    book14 = Book.objects.create(title="انسان کامل: پژواکی از کمال عبد و جمال حق در آیین و اندیشه", authors=author15,
-                                 publisher=publisher11, publication_date="2017-01-16", photo="book_images/12.jpg",
-                                 score=5.0, categories=category4, description="", price=6000)
-    book15 = Book.objects.create(title="خاستگاه و جایگاه پیامبر (ص): جستاری در خاستگاه کلامی، فلسفی و عرفانی نبوت",
-                                 authors=author16, publisher=publisher11, publication_date="2017-01-16",
-                                 photo="book_images/13.jpg", score=5.0, categories=category4, description="",
-                                 price=35000)
-    book16 = Book.objects.create(title="تاریخ مختصر فلسفه جدید: از دکارت تا ویتگنشتاین)", authors=author17,
-                                 publisher=publisher12, publication_date="2017-01-16", photo="book_images/11.jpg",
-                                 score=5.0, categories=category4, description="", price=29700)
-    book17 = Book.objects.create(title="زن در اسلام: کلیات و مبانی", authors=author18, publisher=publisher13,
-                                 publication_date="2017-01-16", photo="book_images/11.jpg", score=5.0,
-                                 categories=category3, description="", price=18000)
-    book18 = Book.objects.create(title="بررسی مکاتب و روش های تفسیری - جلد دوم", authors=author19,
-                                 publisher=publisher14, publication_date="2017-01-16", photo="book_images/8.jpg",
-                                 score=5.0, categories=category3, description="", price=5600)
-    book19 = Book.objects.create(title="مربی نمونه: تفسیر سوره لقمان", authors=author20, publisher=publisher15,
-                                 publication_date="2017-01-16", photo="book_images/4.jpg", score=5.0,
-                                 categories=category3, description="", price=11700)
-    book19 = Book.objects.create(title="تسنیم: تفسیر قرآن کریم - جلد سی و نهم", authors=author21, publisher=publisher16,
-                                 publication_date="2017-01-16", photo="book_images/20.jpg", score=5.0,
-                                 categories=category3, description="", price=29000)
+    book1 = Book(title="جهت نما (40 پرسش و پاسخ مهدوی)",
+                 publication_date="2017-01-16", score=5.0,
+                 description="", price=36000)
+    book1.save()
+    book1.categories.add(category1)
+    book1.authors.add(author8)
+    book1.publisher = publisher4
+    book1.save()
+
+    book2 = Book(title="پایی که جا ماند",
+                 publication_date="2017-01-16", score=5.0,
+                 description="", price=33000)
+    book2.save()
+    book2.categories.add(category2)
+    book2.authors.add(author1)
+    book2.publisher = publisher5
+    book2.save()
+
+    book3 = Book(title="چشمه سار حکمت، یا اندرزهای لقمان حکیم در قرآن و حدیث",
+                 publication_date="2017-01-16",
+                 score=5.0, description="", price=36000)
+    book3.save()
+    book3.categories.add(category3)
+    book3.authors.add(author9)
+    book3.publisher = publisher3
+    book3.save()
+
+    book4 = Book(title="آشنایی با علوم حدیثی",
+                 publication_date="2017-01-16", photo="", score=5.0, price=24000)
+    book4.save()
+    book4.categories.add(category3)
+    book4.authors.add(author3)
+    book4.publisher = publisher6
+    book4.save()
+
+    book5 = Book(title="فلسفه مقدماتی: برگرفته از آثار استاد شهید مرتضی مطهری",
+                 publication_date="2017-01-16",
+                 score=5.0, description="", price=19000)
+    book5.save()
+    book5.categories.add(category4)
+    book5.authors.add(author4)
+    book5.publisher = publisher2
+    book5.save()
+
+    book6 = Book(title="پرتوی از عظمت امام حسین علیه السلام",
+                 publication_date="2017-01-16", score=5.0, description="", price=48600)
+
+    book6.save()
+    book6.categories.add(category3)
+    book6.authors.add(author5)
+    book6.publisher = publisher3
+    book6.save()
+
+    book7 = Book(title="فریادرس: داستان هایی از کرامات امام زمان (عج)", publication_date="2017-01-16",
+                 score=5.0, description="", price=36000)
+
+    book7.save()
+    book7.categories.add(category5)
+    book7.authors.add(author6)
+    book7.publisher = publisher3
+    book7.save()
+
+    book8 = Book(title="عقل از دیدگاه مولانا",
+                 publication_date="2017-01-16", score=5.0,
+                 description="", price=13500)
+    book8.save()
+    book8.categories.add(category4)
+    book8.authors.add(author7)
+    book8.publisher = publisher1
+    book8.save()
+
+    book9 = Book(title="ازدواج به سبک شهدا",
+                 publication_date="2017-01-16", score=5.0,
+                 description="", price=4000)
+    book9.save()
+    book9.categories.add(category2)
+    book9.authors.add(author10)
+    book9.publisher = publisher7
+    book9.save()
+
+    book10 = Book(title="غریب قریب: زندگینامه مهاجر افغانی شهید رجب غلامی", publication_date="2017-01-16",
+                  score=5.0, description="", price=6500)
+    book10.save()
+    book10.categories.add(category2)
+    book10.authors.add(author11)
+    book10.publisher = publisher8
+    book10.save()
+
+    book11 = Book(title="روزگاران 23: کتاب تفحص",
+                  publication_date="2017-01-16", score=5.0,
+                  description="", price=5500)
+    book11.save()
+    book11.categories.add(category2)
+    book11.authors.add(author12)
+    book11.publisher = publisher9
+    book11.save()
+
+    book12 = Book(title="از چشم ها 14: ققنوس سوخته (کتاب بهروز فلاحت پور)", publication_date="2017-01-16",
+                  score=5.0, description="", price=7000)
+    book12.save()
+    book12.categories.add(category4)
+    book12.authors.add(author7)
+    book12.publisher = publisher1
+    book12.save()
+
+    book13 = Book(title="در راه (خاطرات آزاده جانبار، سرباز وظیفه علی خسروی نیک)", publication_date="2017-01-16",
+                  score=5.0, description="", price=11250)
+    book13.save()
+    book13.categories.add(category2)
+    book13.authors.add(author14)
+    book13.publisher = publisher10
+    book13.save()
+
+    book14 = Book(title="انسان کامل: پژواکی از کمال عبد و جمال حق در آیین و اندیشه",
+                  publication_date="2017-01-16",
+                  score=5.0, description="", price=6000)
+    book14.save()
+    book14.categories.add(category4)
+    book14.authors.add(author15)
+    book14.publisher = publisher11
+    book14.save()
+
+    book15 = Book(title="خاستگاه و جایگاه پیامبر (ص): جستاری در خاستگاه کلامی، فلسفی و عرفانی نبوت",
+                  publication_date="2017-01-16",
+                  score=5.0, description="",
+                  price=35000)
+    book15.save()
+    book15.categories.add(category4)
+    book15.authors.add(author16)
+    book15.publisher = publisher11
+    book15.save()
+
+    book16 = Book(title="تاریخ مختصر فلسفه جدید: از دکارت تا ویتگنشتاین)",
+                  publication_date="2017-01-16",
+                  score=5.0, description="", price=29700)
+    book16.save()
+    book16.categories.add(category4)
+    book16.authors.add(author17)
+    book16.publisher = publisher12
+    book16.save()
+
+    book17 = Book(title="زن در اسلام: کلیات و مبانی",
+                  publication_date="2017-01-16", score=5.0,
+                  description="", price=18000)
+    book17.save()
+    book17.categories.add(category3)
+    book17.authors.add(author18)
+    book17.publisher = publisher13
+    book17.save()
+
+    book18 = Book(title="بررسی مکاتب و روش های تفسیری - جلد دوم",
+                  publication_date="2017-01-16",
+                  score=5.0, description="", price=5600)
+
+    book18.save()
+    book18.categories.add(category3)
+    book18.authors.add(author19)
+    book18.publisher = publisher14
+    book18.save()
+
+    book19 = Book(title="مربی نمونه: تفسیر سوره لقمان",
+                  publication_date="2017-01-16", score=5.0,
+                  description="", price=11700)
+    book19.save()
+    book19.categories.add(category2)
+    book19.authors.add(author14)
+    book19.publisher = publisher10
+    book19.save()
+
+    book20 = Book(title="تسنیم: تفسیر قرآن کریم - جلد سی و نهم",
+                  publication_date="2017-01-16", score=5.0,
+                  description="", price=29000)
+    book20.save()
+    book20.categories.add(category3)
+    book20.authors.add(author21)
+    book20.publisher = publisher16
+    book20.save()
