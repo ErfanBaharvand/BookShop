@@ -41,20 +41,20 @@
                     <div class="tab-content">
                         <div id="loginPage" class="tab-pane fade in active">
                             <h2>Login</h2>
-                            <form>
+                            <form action="/update/login/" method="post">
                                 <div class="form-group">
                                     <label for="email">Email:</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="username">
                                 </div>
                                 <div class="form-group">
                                     <label for="pwd">Password:</label>
-                                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pass">
                                 </div>
                                 <div class="checkbox">
                                     <label><input type="checkbox">Remember me</label>
                                 </div>
                                 <button type="submit" class="btn btn-success">Login</button>
-                                <button type="submit" class="btn btn-info">Forget Password</button>
+                                <button type="button" class="btn btn-info" onclick="window.location='/forgetPass'">Forget Password</button>
                             </form>
                         </div>
                         <div id="registerPage" class="tab-pane fade">

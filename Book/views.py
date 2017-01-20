@@ -63,7 +63,12 @@ def book_detail(request, id):
 def category(request, id):
     books = Book.objects.filter(categories__en_name=Category.objects.get(pk=id).en_name)
     listMenu = Category.objects.all()
-    return render(request, 'CategoryPage.html', {'books': books, 'listMenu':listMenu})
+    return render(request, 'CategoryPage.html', {'books': books, 'listMenu': listMenu})
+
+
+def forgetPass(request):
+    page = loader.get_template('ForgetPasswordPage.html')
+    return HttpResponse(page.render())
 
 
 @csrf_exempt
@@ -73,5 +78,14 @@ def register(request):
     family = request.POST['family']
     email = request.POST['email']
     password = request.POST['pass']
-    user = User.objects.create(first_name=name, last_name=family ,email=email, password=password, username=email)
+    user = User.objects.create(first_name=name, last_name=family, email=email, password=password, username=email)
     return render(request, 'index.html')
+
+
+@csrf_exempt
+@require_POST
+def login(request):
+    username = request.POST['username']
+    password = request.POST['pass']
+    user = User.objects.all()
+    pass
