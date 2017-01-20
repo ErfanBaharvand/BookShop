@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -33,11 +35,11 @@ class Category(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=100)
     authors = models.ManyToManyField(Author)
-    publisher = models.ForeignKey(Publisher)
-    publication_date = models.DateField()
-    photo = models.ImageField(upload_to='book_images/')
+    publisher = models.ForeignKey(Publisher, null=True, blank=True)
+    publication_date = models.DateField(default='2015-08-21')
+    photo = models.ImageField(upload_to='book_images/', default='/book_images/default.jpg', null=False, blank=False)
     score = models.FloatField(max_length=5, default=0)
-    categories = models.ManyToManyField(Category)
+    categories = models.ManyToManyField(Category, null=True, blank=True)
     chosen = models.BooleanField(default=False)
     description = models.CharField(max_length=512, default="")
     price = models.FloatField(default=0)
