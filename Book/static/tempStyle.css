@@ -34,18 +34,15 @@
     width: 100px;
     background: #196F3D;
     background: -webkit-linear-gradient(90deg, #196F3D, #196F3D) top left, -webkit-linear-gradient(90deg, #196F3D, #196F3D) top right, -webkit-linear-gradient(135deg, transparent 10px, #196F3D 0) bottom right, -webkit-linear-gradient(90deg, #196F3D, #196F3D) bottom left;
-    background: linear-gradient(0deg, #196F3D, #196F3D) top left, linear-gradient(0deg, #196F3D, #196F3D) top right, linear-gradient(315deg, transparent 10px, #196F3D 0) bottom right, linear-gradient(0deg, #196F3D, #196F3D) bottom left;
     background-size: 55% 55%;
     background-repeat: no-repeat;
     color: white;
     padding: 10px;
     text-align: center; }
     .event .entry-rate .Rate {
-      font-size: 36px;
-      font-size: 2.25em;
+        font-size: 2.25em;
       font-weight: 900; }
     .event .entry-rate .rateVal {
-      font-size: 14px;
       font-size: 0.875em;
       text-transform: uppercase; }
 
@@ -89,7 +86,7 @@
     padding: 7px 8px 8px 32px;
     text-decoration: none;
     font-size: 18px;
-    font-family: 'projectFont';
+    font-family: 'projectFont', serif;
     color: #818181;
     display: block;
     transition: 0.3s;

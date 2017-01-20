@@ -1,13 +1,12 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 
-from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.template import RequestContext, loader
-from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.http import HttpResponse
+from django.template import loader
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
 from Book.models import Book, Category, Slider
-from Book.models import Token
 
 
 def home(request):
@@ -21,11 +20,11 @@ def home(request):
     slider = Slider.objects.all()
     if len(slider) > 5:
         slider = slider[:5]
-    return render(request, 'index.html', {'chosenBook': chosen_books
-        , 'newBook': new_books
-        , 'listMenu': listMenu
-        , 'contentSlider': slider
-                                          })
+    return render(request, 'index.html',
+                  {'chosenBook': chosen_books,
+                   'newBook': new_books,
+                   'listMenu': listMenu,
+                   'contentSlider': slider})
 
 
 def about(request):
@@ -48,8 +47,8 @@ def handler404(request):
     return HttpResponse(page.render())
 
 
-def book_detail(request, id):
-    book = Book.objects.get(pk=id)
+def book_detail(request, bookId):
+    book = Book.objects.get(pk=bookId)
     author = book.authors.all()[0]
     key = ['عنوان', 'نویسنده', 'ناشر', 'تاریخ انتشار', 'امتیاز']
     val = [book.title, author.first_name + " " + author.last_name, book.publisher.name, book.publication_date,
@@ -60,8 +59,8 @@ def book_detail(request, id):
     return render(request, 'BookPage.html', {'detail': detail, 'val': val, 'book': book})
 
 
-def category(request, id):
-    books = Book.objects.filter(categories__en_name=Category.objects.get(pk=id).en_name)
+def category(request, categoryId):
+    books = Book.objects.filter(categories__en_name=Category.objects.get(pk=categoryId).en_name)
     listMenu = Category.objects.all()
     return render(request, 'CategoryPage.html', {'books': books, 'listMenu': listMenu})
 
@@ -78,7 +77,7 @@ def register(request):
     family = request.POST['family']
     email = request.POST['email']
     password = request.POST['pass']
-    user = User.objects.create(first_name=name, last_name=family, email=email, password=password, username=email)
+    User.objects.create(first_name=name, last_name=family, email=email, password=password, username=email)
     return render(request, 'index.html')
 
 
