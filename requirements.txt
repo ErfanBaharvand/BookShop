@@ -1,4 +1,4 @@
 django>=1.11.29
-virtualenv==15.1.0
+virtualenv==20.26.6
 olefile==0.44
 pillow>=8.1.1
